@@ -25,11 +25,11 @@ Comunicación entre microservicios:
 -
 
 Puertos
-Usuarios 8067
-Grupos 8068
-Gastos 8070
-Balance 8071
-Eventos 8082
+*Usuarios 8067
+*Grupos 8068
+*Gastos 8070
+*Balance 8071
+*Eventos 8082
 
 -
 API Gateway
@@ -115,7 +115,5 @@ json
   "fechaEvento": "2026-05-15",
   "estado": "ACTIVO"
 }
-
-
 
 ---
