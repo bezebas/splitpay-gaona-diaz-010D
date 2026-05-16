@@ -1,13 +1,13 @@
 ---
 SplitPay – Microservicios
 
-Descripción del proyecto:
+Descripción del proyecto
 Sistema de microservicios para la gestión de grupos, eventos y gastos de un sistema tipo SplitPay, donde los usuarios pueden crear grupos, asignar eventos y registrar gastos asociados.
 El sistema está basado en arquitectura de microservicios con comunicación entre servicios usando *OpenFeign* y control de rutas mediante *API Gateway*.
 
 ---
 
-Arquitectura del sistema:
+Arquitectura del sistema
 
 El sistema está compuesto por los siguientes microservicios:
 
@@ -24,7 +24,7 @@ Comunicación entre microservicios:
 
 -
 
-Puertos:
+Puertos
 Usuarios 8067
 Grupos 8068
 Gastos 8070
@@ -36,7 +36,7 @@ API Gateway
 Puerto: 8083
 -
 
-Rutas principales:
+Rutas principales
 * /grupos/** → Grupo Service
 * /eventos/** → Evento Service
 * /gastos/** → Gasto Service
