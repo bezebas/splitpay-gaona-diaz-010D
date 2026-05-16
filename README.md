@@ -17,20 +17,16 @@ El sistema está compuesto por los siguientes microservicios:
 * Gasto Service (puerto 8070)
 * Balance Service (puerto 8071)
 * API Gateway (puerto 8083)
-
 Comunicación entre microservicios:
 * Evento Service valida la existencia de un grupo mediante OpenFeign hacia Grupo Service.
 * Gasto Service valida la existencia de un evento mediante OpenFeign hacia Evento Service.
-
 -
-
 Puertos
 *Usuarios 8067
 *Grupos 8068
 *Gastos 8070
 *Balance 8071
 *Eventos 8082
-
 -
 API Gateway
 Puerto: 8083
@@ -60,35 +56,25 @@ Cada microservicio utiliza su propia base de datos independiente.
 * bd_splitpay_balances
 * bd_splitpay_eventos
 ---
-
 Endpoints principales
-
 Grupo Service
-
 * POST /grupos
 * GET /grupos
 * GET /grupos/{id}
 * DELETE /grupos/{id}
-
 Evento Service
-
 * POST /eventos
 * GET /eventos
 * GET /eventos/{id}
 * GET /eventos/grupo/{grupoId}
 * DELETE /eventos/{id}
-
  Gasto Service
-
 * POST /gastos
 * GET /gastos
 * GET /gastos/evento/{eventoId}
 * DELETE /gastos/{id}
-
 ---
-
 Ejemplo de prueba (Postman)
-
 ### Crear grupo
 
 json
