@@ -62,23 +62,145 @@ Endpoints
 *http://localhost:8083/
 
 Ejemplo de prueba (Postman)
-### Crear grupo
 
-json
+http://localhost:8083/usuarios
+
+POST
+
 {
-  "nombre": "Grupo prueba",
-  "creadoPor": "usuario1"
+  "nombre": "Juan Pérez",
+  "correo": "juan@email.com",
+  "contrasenaHash": "123456"
+} 
+
+RESPUESTA
+
+{
+    "id": "233d1534-fd1b-4462-884b-1a64cb083351",
+    "nombre": "Juan Pérez",
+    "correo": "juan@email.com",
+    "contrasenaHash": "123456",
+    "puntajeReputacion": 0.0,
+    "creado_en": "2026-05-15T22:02:36.8305614",
+    "activo": true
 }
 
+******************************************************
+http://localhost:8083/grupos
 
-### Crear evento
+POST
 
-json
 {
-  "grupoId": "ID_DEL_GRUPO",
-  "nombre": "Evento prueba",
-  "descripcion": "test",
+  "nombre": "Grupo Universidad",
+  "descripcion": "Trabajo de microservicios",
+  "creadoPor": "a1b2c3d4-usuario"
+}
+
+RESPUESTA
+
+{
+    "id": "6cf8337d-6ddc-4741-b26e-de0cadff8fec",
+    "nombre": "Grupo Universidad",
+    "descripcion": "Trabajo de microservicios",
+    "creadoPor": "a1b2c3d4-usuario",
+    "creadoEn": "2026-05-15T22:05:27.9993514",
+    "activo": true
+}
+
+******************************************************
+http://localhost:8083/eventos
+
+POST
+
+{
+  "grupoId": "6cf8337d-6ddc-4741-b26e-de0cadff8fec",
+  "nombre": "Pizza Night",
+  "descripcion": "Cena de equipo",
   "fechaEvento": "2026-05-15",
   "estado": "ACTIVO"
 }
+
+RESPUESTA
+
+{
+    "id": "971b7ccd-403f-4152-af56-fc20f78eb3de",
+    "grupoId": "6cf8337d-6ddc-4741-b26e-de0cadff8fec",
+    "nombre": "Pizza Night",
+    "descripcion": "Cena de equipo",
+    "fechaEvento": "2026-05-15",
+    "estado": "ACTIVO"
+}
+
+SI GRUPO NO EXISTE
+
+{
+  "status": 404,
+  "error": "El grupo no existe",
+  "path": "/eventos"
+}
+
+******************************************************
+http://localhost:8083/gastos
+
+POST
+
+{
+  "eventoId": "971b7ccd-403f-4152-af56-fc20f78eb3de",
+  "monto": 15000,
+  "descripcion": "Pizza y bebidas",
+  "pagadoPor": "Juan",
+  "categoria": "Comida",
+  "montoTotal": 25000,
+  "tipoDivision": "Equitativo"
+}
+
+
+RESPUESTA
+
+{
+    "id": "14819e0f-3517-42c6-a130-6c6c4c4bdabd",
+    "eventoId": "971b7ccd-403f-4152-af56-fc20f78eb3de",
+    "pagadoPor": "Juan",
+    "descripcion": "Pizza y bebidas",
+    "categoria": "Comida",
+    "montoTotal": 25000.0,
+    "tipoDivision": "Equitativo"
+}
+
+SI EVENTO NO EXISTE
+
+{
+  "status": 404,
+  "error": "El evento no existe",
+  "path": "/gastos"
+}
+
+******************************************************
+http://localhost:8083/balances
+
+POST
+
+{
+  "id": "uuid-generado",
+  "eventoId": "e1b7ccd-403f-4152-af56-fc20f78eb3de",
+  "usuarioDeudorId": "233d1534-fd1b-4462-884b-1a64cb083351",
+  "usuarioAcreedorId": "u2",
+  "monto": 25000,
+  "estado": "PENDIENTE"
+}
+
+RESPUESTA
+
+{
+    "id": dd4ff786-4dfd-4b08-a8d1-613f14691c0f,
+    "eventoId": "e1b7ccd-403f-4152-af56-fc20f78eb3de",
+    "usuarioDeudorId": "233d1534-fd1b-4462-884b-1a64cb083351",
+    "usuarioAcreedorId": "u2",
+    "monto": 25000.0,
+    "estado": "PENDIENTE"
+}
+
+
+
+
 
