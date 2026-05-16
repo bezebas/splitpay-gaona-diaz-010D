@@ -1,0 +1,40 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      routes:
+
+        - id: usuario-service
+          uri: http://localhost:8067
+          predicates:
+            - Path=/usuarios/**
+
+        - id: grupos-service
+          uri: http://localhost:8068
+          predicates:
+            - Path=/grupos/**
+
+        - id: miembros-service
+          uri: http://localhost:8068
+          predicates:
+            - Path=/miembros/**
+
+        - id: gastos-service
+          uri: http://localhost:8070
+          predicates:
+            - Path=/gastos/**
+
+        - id: evento-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/eventos/**
+
+        - id: balances-service
+          uri: http://localhost:8071
+          predicates:
+            - Path=/balances/**
