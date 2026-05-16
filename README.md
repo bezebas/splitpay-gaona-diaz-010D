@@ -35,7 +35,6 @@ Puertos
 API Gateway
 Puerto: 8083
 -
-
 Rutas principales
 * /grupos/** → Grupo Service
 * /eventos/** → Evento Service
@@ -43,10 +42,7 @@ Rutas principales
 * /usuarios/** → Usuario Service
 * /balance/** → Balance Service
 -
-
--
 Tecnologías utilizadas
-
 * Java 21
 * Spring Boot
 * Spring Data JPA
@@ -55,11 +51,8 @@ Tecnologías utilizadas
 * MySQL
 * Maven
 * Postman
- 
 -
-
 Base de datos
-
 Cada microservicio utiliza su propia base de datos independiente.
 * bd_splitpay_usuarios
 * bd_splitpay_grupos
