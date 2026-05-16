@@ -57,26 +57,9 @@ Cada microservicio utiliza su propia base de datos independiente.
 * bd_splitpay_balances
 * bd_splitpay_eventos
 
-Endpoints principales
+Endpoints 
 
-Grupo Service
-* POST /grupos
-* GET /grupos
-* GET /grupos/{id}
-* DELETE /grupos/{id}
-  
-Evento Service
-* POST /eventos
-* GET /eventos
-* GET /eventos/{id}
-* GET /eventos/grupo/{grupoId}
-* DELETE /eventos/{id}
-  
- Gasto Service
-* POST /gastos
-* GET /gastos
-* GET /gastos/evento/{eventoId}
-* DELETE /gastos/{id}
+*http://localhost:8083/
 
 Ejemplo de prueba (Postman)
 ### Crear grupo
