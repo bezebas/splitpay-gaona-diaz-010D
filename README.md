@@ -202,5 +202,75 @@ RESPUESTA
 
 
 
+# SplitPay - Sistema de Microservicios
+
+Este proyecto consiste en el desarrollo del ecosistema de microservicios para la plataforma SplitPay, diseñado para gestionar de forma eficiente cuentas compartidas, historiales, reputación de usuarios y autenticación segura mediante arquitectura distribuida con Spring Boot.
+
+---
+
+## Bibliotecas y Dependencias Utilizadas
+
+El backend está construido utilizando el framework de Spring Boot 3.x, incorporando las siguientes librerías core distribuidas en los archivos pom.xml:
+
+1. Spring Web: Para la exposición y manejo de APIs RESTful y controladores.
+2. Spring Data JPA: Abstracción de persistencia de datos para interactuar de forma relacional con MySQL mediante Hibernate.
+3. MySQL Driver: Conector nativo de Java para la comunicación con la base de datos MySQL.
+4. Spring Security: Framework encargado de proteger las rutas y configurar una política de sesión sin estado (Stateless).
+5. JJWT (Java JWT): Compuesto por jjwt-api, jjwt-impl y jjwt-jackson para la generación, firma digital y descifrado de tokens de acceso seguro.
+6. Springdoc OpenAPI UI (Swagger): Generación automática de especificaciones y documentación interactiva de la API en tiempo de ejecución.
+7. Lombok: Para reducir el código boilerplate (Getters, Setters, Contructores) mediante anotaciones.
+8. JUnit 5 & Mockito (Spring Boot Starter Test): Herramientas estándar para el desarrollo de pruebas unitarias y mocks de comportamiento, alcanzando más del 60% de cobertura.
+
+---
+
+## Ejemplos de Rutas para Ejecución de API REST
+
+### 1. Microservicio de Autenticación (auth-service) - Puerto 8085
+* POST `/api/auth/login` -> Solicita el Token de acceso JWT.
+    * Body (JSON):
+        ```json
+        {
+          "username": "admin",
+          "password": "duoc2026"
+        }
+        ```
+    * Respuesta Exitosa (200 OK):
+        ```json
+        {
+          "token": "eyJhbGciOiJIUzI1NiJ9...",
+          "type": "Bearer"
+        }
+        ```
+
+### 2. Microservicio de Reputación (db_reputacion) - Puerto 8090
+* POST `/api/reputacion` -> Registra una nueva reputación.
+    * Body (JSON):
+        ```json
+        {
+          "usuarioId": "usr-test-100",
+          "puntaje": 95,
+          "nivel": "EXCELENTE",
+          "observaciones": "Usuario paga sus cuotas a tiempo."
+        }
+        ```
+* GET `/api/reputacion` -> Retorna el listado completo de reputaciones.
+* GET `/api/reputacion/{id}` -> Retorna el registro de reputación por su ID único.
+* GET `/api/reputacion/usuario/{usuarioId}` -> Retorna la reputación buscando por ID de usuario.
+* PUT `/api/reputacion/{id}` -> Modifica puntaje, nivel u observaciones de un registro existente.
+* DELETE `/api/reputacion/{id}` -> Elimina un perfil de reputación de la base de datos.
+
+---
+
+## Ejemplos de Ruta para Ejecución de Swagger
+
+Cada microservicio expone de manera independiente su documentación gráfica interactiva a través de OpenAPI. Para visualizar los endpoints, interactuar con ellos y ejecutar pruebas en tiempo real, abre tu navegador web e ingresa a las siguientes direcciones de acuerdo al servicio que desees auditar:
+
+* Swagger de Autenticación: `http://localhost:8085/swagger-ui/index.html`
+* Swagger de Reputación: `http://localhost:8090/swagger-ui/index.html`
+* Swagger de Historial: `http://localhost:8089/swagger-ui/index.html`
+
+*(Nota: Asegúrate de que el microservicio correspondiente se encuentre en estado "Running" antes de ingresar a la URL).*
+
+
 
 
